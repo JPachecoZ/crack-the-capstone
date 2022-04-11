@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :enrollments
 
+  get '/' => "users#index"
+
   root "users#index"
 end
