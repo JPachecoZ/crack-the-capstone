@@ -1,34 +1,44 @@
 class UsersController < ApplicationController
   
+  def index
+    @users = User.all
+    render json: @users
+  end
+
   #get/User
   def show
-    render json: user
+    @user = User.find_by(:id)
+    render json: @user
   end
 
   #create/user
   def create
-    user = User.new(user_params)
+    @user = User.new(user_params)
 
     if user.save
-      render json: user, status: :created
+      render json: @user, status: :created
     else
-      render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+      render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
     end
+
   end
 
   #Update/profile
   def update
-    if user.update(user_params)
-      render json: user
+
+    if @user.update(user_params)
+      render json: @user
     else
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
+
   end
 
   #Delete/profile ????????????????????????????????????????????????
   def delete
-    if user.destroy
+    if @user.destroy
       render json: "ok"
+    end
   end
 
   #delegate :destroy, to: :current_user
