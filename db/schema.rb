@@ -16,10 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_162128) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.string "slug"
     t.string "description"
-    t.string "set_title"
-    t.string "seo_meta_description"
     t.decimal "amount_usd", precision: 6, scale: 2
     t.decimal "amount_pen", precision: 6, scale: 2
     t.string "final_project_description"
@@ -30,11 +27,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_162128) do
 
   create_table "enrollments", force: :cascade do |t|
     t.bigint "group_id", null: false
-    t.bigint "course_id", null: false
     t.bigint "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_enrollments_on_course_id"
     t.index ["group_id", "student_id"], name: "index_enrollments_on_group_id_and_student_id", unique: true
     t.index ["group_id"], name: "index_enrollments_on_group_id"
     t.index ["student_id"], name: "index_enrollments_on_student_id"
@@ -73,7 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_162128) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "enrollments", "courses"
   add_foreign_key "enrollments", "groups"
   add_foreign_key "enrollments", "students"
   add_foreign_key "groups", "courses"
