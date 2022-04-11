@@ -30,6 +30,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+
+gem 'active_serializer', '~> 0.1.1'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -46,3 +48,4 @@ group :development do
   # gem "spring"
 end
 
+gem "roo", "~> 2.9"

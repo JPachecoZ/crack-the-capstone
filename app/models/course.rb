@@ -1,5 +1,8 @@
 class Course < ApplicationRecord
-
-  #Validations
+  # Associations
+  has_many :groups
+  
+  # Validations
   validates :name, uniqueness: true
+
 end
