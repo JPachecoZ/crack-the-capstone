@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :password
       t.string :doc_type
-      t.string :doc_type
       t.string :doc_number
       t.string :country
 

@@ -6,8 +6,8 @@ class CreateCourses < ActiveRecord::Migration[7.0]
       t.string :description
       t.string :set_title
       t.string :seo_meta_description
-      t.decimal :amount_usd
-      t.decimal :amount_pen
+      t.decimal :amount_usd, precision: 6, scale: 2
+      t.decimal :amount_pen, precision: 6, scale: 2
       t.string :final_project_description
       t.string :project_summary
 
