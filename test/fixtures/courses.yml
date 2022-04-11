@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  slug: MyString
+  description: MyString
+  set_title: MyString
+  seo_meta_description: MyString
+  amount_usd: 9.99
+  amount_pen: 9.99
+  final_project_description: MyString
+  project_summary: MyString
+
+two:
+  name: MyString
+  slug: MyString
+  description: MyString
+  set_title: MyString
+  seo_meta_description: MyString
+  amount_usd: 9.99
+  amount_pen: 9.99
+  final_project_description: MyString
+  project_summary: MyString
