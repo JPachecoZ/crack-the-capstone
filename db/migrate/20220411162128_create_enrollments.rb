@@ -7,5 +7,7 @@ class CreateEnrollments < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    add_index :enrollments, [:group_id, :student_id], unique: true
   end
 end

@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_162128) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["group_id", "student_id"], name: "index_enrollments_on_group_id_and_student_id", unique: true
     t.index ["group_id"], name: "index_enrollments_on_group_id"
     t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
