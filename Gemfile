@@ -31,7 +31,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 
-gem 'active_serializer', '~> 0.1.1'
+#gem 'active_serializer', '~> 0.1.1'
+gem 'active_model_serializers', '~> 0.10.13'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
