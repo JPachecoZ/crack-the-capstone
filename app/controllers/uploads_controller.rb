@@ -20,7 +20,7 @@ class UploadsController < ApplicationController
       end
     end
 
-    render headers
+    render json: {data: data}, status: :ok
     puts "Rake end!"
   end
 end
