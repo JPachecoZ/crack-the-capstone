@@ -11,5 +11,7 @@ class CreateStudents < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    
+    add_index :students, [:first_name, :user_id], unique: true
   end
 end
