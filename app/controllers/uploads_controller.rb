@@ -80,6 +80,7 @@ class UploadsController < ApplicationController
     end
 
     pp data_to_return
+    pp sheet.to_csv
     render json: {data: data_to_return}, status: :ok
     puts "Rake end!"
   end

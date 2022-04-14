@@ -16,7 +16,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_162128) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
     t.string "description"
+    t.string "seo_title"
+    t.string "seo_meta_description"
     t.decimal "amount_usd", precision: 6, scale: 2
     t.decimal "amount_pen", precision: 6, scale: 2
     t.string "final_project_description"
@@ -53,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_162128) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["first_name", "user_id"], name: "index_students_on_first_name_and_user_id", unique: true
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
