@@ -32,7 +32,12 @@ class UploadsController < ApplicationController
 
     # pp excel_array
 
-    data_to_return = []
+    data_to_return = {
+      registers_created: 0,
+      registers_with_errors: 0,
+      total_data_analized: 0,
+      data_to_inspect: []
+    }
     
     # Ordena las celdas
     data.each_with_index do |row, index|
@@ -42,6 +47,7 @@ class UploadsController < ApplicationController
               first_name: row[0],
               last_name: row[1],
               email: row[3],
+              password: "capstone2022",
               country: row[4],
               doc_type: row[5],
               doc_number: row[6]
@@ -65,22 +71,27 @@ class UploadsController < ApplicationController
         )
 
         p enrollment.errors.messages
-        
-        if user.errors || student.errors || enrollment.errors 
+      
+        data_to_return[:total_data_analized] += 1
 
+        if user.errors.size != 0 || student.errors.size != 0 || enrollment.errors.size != 0
+          pp "#############################################"
+          pp "Hay errores"
+          pp "#############################################"
           # Defines where to start printing the errors.
           i = row.length + 1
 
           row[i] = user.errors
           row[i+1] = student.errors
           row[i+2] = enrollment.errors
-          data_to_return << row
+          data_to_return[:data_to_inspect] << row
+          data_to_return[:registers_with_errors] += 1
+        else
+          data_to_return[:registers_created] += 1
         end
       end
     end
 
-    pp data_to_return
-    pp sheet.to_csv
     render json: {data: data_to_return}, status: :ok
     puts "Rake end!"
   end
