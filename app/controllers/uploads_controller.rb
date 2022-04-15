@@ -62,24 +62,24 @@ class UploadsController < ApplicationController
         
         end
 
-        if Student.find_by(first_name: row[7])
+        if Student.find_by(first_name: row[10]) == nil || Student.find_by(first_name: row[10]) != nil && Student.find_by(first_name: row[10]).user_id != user.id
 
         student = Student.create(
-              first_name: row[7],
-              last_name: row[8],
-              birthdate: row[9],
+              first_name: row[10],
+              last_name: row[11],
+              birthdate: row[13],
               email: row[3],
               user_id: user.id,
             )
         
         p student.errors.messages
 
-        else student = Student.find_by(first_name: row[7])
+        else student = Student.find_by(first_name: row[10])
 
         end
 
         enrollment = Enrollment.create(
-              group_id: row[19],
+              group_id: row[23],
               student_id: student.id
         )
 
