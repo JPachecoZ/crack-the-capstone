@@ -43,7 +43,10 @@ class UploadsController < ApplicationController
     data.each_with_index do |row, index|
 
       if index > 1
-        user = User.create(
+
+        if User.find_by(email: row[3]) == nil
+
+          user = User.create(
               first_name: row[0],
               last_name: row[1],
               email: row[3],
@@ -52,8 +55,14 @@ class UploadsController < ApplicationController
               doc_type: row[5],
               doc_number: row[6]
             )
-        
+
         p user.errors.messages
+
+        else user = User.find_by(email: row[3])
+        
+        end
+
+        if Student.find_by(first_name: row[7])
 
         student = Student.create(
               first_name: row[7],
@@ -64,7 +73,11 @@ class UploadsController < ApplicationController
             )
         
         p student.errors.messages
-        
+
+        else student = Student.find_by(first_name: row[7])
+
+        end
+
         enrollment = Enrollment.create(
               group_id: row[19],
               student_id: student.id
@@ -75,9 +88,6 @@ class UploadsController < ApplicationController
         data_to_return[:total_data_analized] += 1
 
         if user.errors.size != 0 || student.errors.size != 0 || enrollment.errors.size != 0
-          pp "#############################################"
-          pp "Hay errores"
-          pp "#############################################"
           # Defines where to start printing the errors.
           i = row.length + 1
 
