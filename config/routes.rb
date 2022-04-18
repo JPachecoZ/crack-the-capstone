@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
+  get '/' => 'uploads#index'
+  post '/upload' => 'uploads#upload'
 
-  resources :users
-  resources :courses
-  resources :students
-  resources :groups
-  resources :enrollments
-
-  post "/upload" => "uploads#upload"
-  get '/' => "users#index"
-
-  root "users#index"
+  root 'uploads#index'
 end
